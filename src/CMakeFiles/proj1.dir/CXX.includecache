@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shijy/work/computer_graphics/CG_proj1/src/main.cpp
+iostream
+-
+opencv2/opencv.hpp
+-
+vector3.h
+/home/shijy/work/computer_graphics/CG_proj1/src/vector3.h
+
+/home/shijy/work/computer_graphics/CG_proj1/src/vector3.cpp
+vector3.h
+/home/shijy/work/computer_graphics/CG_proj1/src/vector3.h
+
+/home/shijy/work/computer_graphics/CG_proj1/src/vector3.h
+stdlib.h
+-
+iostream
+-
+math.h
+-
+

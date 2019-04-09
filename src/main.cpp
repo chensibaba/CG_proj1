@@ -1,12 +1,17 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include "vector3.h"
 
-using namespace std;
 using namespace cv;
 
 int main(void){
-	Mat src_image_ = imread("test.jpg");   // 读取当前目录下的test.jpg图片
-	imshow("src_image_", src_image_);   // 打开图片文件
-	waitKey(5000);     // 停留5秒钟
+	vector3 a = vector3(1,2,3);
+	a.show();
+	vector3 b = vector3(1,2,3);
+	vector3 c = vector3::mul(a,b);
+	c.show();
+	c = a+b;
+	c = a;
+	c.show();
 	return 0;
 }

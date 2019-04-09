@@ -1,0 +1,3 @@
+/home/shijy/work/computer_graphics/CG_proj1/src/CMakeFiles/rebuild_cache.dir
+/home/shijy/work/computer_graphics/CG_proj1/src/CMakeFiles/proj1.dir
+/home/shijy/work/computer_graphics/CG_proj1/src/CMakeFiles/edit_cache.dir
