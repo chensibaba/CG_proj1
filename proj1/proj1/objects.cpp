@@ -8,7 +8,7 @@ Texture::Type Texture::getType() {
 /****************************************************/
 /******************    PicTexture   ******************/
 /*****************************************************/
-PicTexture::PicTexture(char* p){
+PicTexture::PicTexture(std::string p){
 	type = PICTURE;
 	picPath = p;
 	loadPic();
@@ -45,7 +45,7 @@ Color ColorTexture::getColor(double x, double y) {
 /****************************************************/
 /******************    Plane   **********************/
 /*****************************************************/
-Plane::Plane(Meterial m, Texture* t,Vector3 _P, Vector3 _n, double _D) :P(_P),n(_n), D(_D) {
+Plane::Plane(Meterial* m, Texture* t,Vector3 _P, Vector3 _n, double _D) :P(_P),n(_n), D(_D) {
 	objMeterial = m;
 	objTexture = t;
 	if (n.getX() == 0) {
@@ -83,7 +83,7 @@ Color Plane::getColor(Vector3 &pos) {
 /****************************************************/
 /******************    Sphere  **********************/
 /****************************************************/
-Sphere::Sphere(Meterial m, Texture* t, Vector3 _P, double _r) :P(_P), r(_r) {
+Sphere::Sphere(Meterial* m, Texture* t, Vector3 _P, double _r) :P(_P), r(_r) {
 	objMeterial = m;
 	objTexture = t;
 }

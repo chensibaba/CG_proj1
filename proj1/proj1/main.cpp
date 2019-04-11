@@ -14,12 +14,7 @@ using namespace cv;
 
 */
 int main(void){
-	PicTexture t = PicTexture("test.jpg");
-	Color a = t.getColor(1000, 1000);
-	a.show();
-	ColorTexture c = ColorTexture(new Color(100, 100, 100));
-	Color b = c.getColor(100, 100);
-	b.show();
+	
 	system("pause");
 	return 0;
 }

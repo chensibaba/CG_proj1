@@ -7,6 +7,13 @@ struct Meterial {
 	double refract;
 	double diffuse;
 	double specular;
+	Meterial() {
+		reflect = 0;
+		refract = 0;
+		diffuse = 0;
+		specular = 0;
+	}
+	Meterial(double rfl,double rfr,double dfu,double spcl):reflect(rfl),refract(rfr),diffuse(dfu),specular(spcl){}
 };
 
 /*		   Texture
@@ -24,15 +31,15 @@ protected:
 public:
 	Texture();
 	Type getType();
-	virtual Color getColor(double x,double y) = 0;
+	Color getColor(double x, double y) { return Color(0, 0, 0); };
 };
 
 class PicTexture :Texture {
 private:
-	char* picPath;
+	std::string picPath;
 	cv::Mat pic;
 public:
-	PicTexture(char*);
+	PicTexture(std::string);
 	~PicTexture() {}
 	void loadPic();
 	Color getColor(double x, double y);
@@ -52,17 +59,17 @@ public:
 ********************************************/
 class Object {
 protected:
-	Meterial objMeterial;
+	Meterial* objMeterial;
 	Texture* objTexture;
 	std::string name;
 public:
 	Object(){}
 	std::string getName() { return name; }
-	double getReflect() { return objMeterial.reflect; }
-	double getRefract() { return objMeterial.refract; }
-	double getdiffuse() { return objMeterial.diffuse; }
-	double getspecular() { return objMeterial.specular; }
-	virtual Color getColor(Vector3 &pos) const = 0;
+	double getReflect() { return objMeterial->reflect; }
+	double getRefract() { return objMeterial->refract; }
+	double getdiffuse() { return objMeterial->diffuse; }
+	double getspecular() { return objMeterial->specular; }
+	virtual Color getColor(Vector3 &pos) = 0;
 	virtual double intersect(Ray &r) = 0;
 };
 
@@ -74,7 +81,7 @@ private:
 	Vector3 dy;
 	double D;
 public:
-	Plane(Meterial m, Texture* t, Vector3 _P, Vector3 _n, double _D);
+	Plane(Meterial* m, Texture* t, Vector3 _P, Vector3 _n, double _D);
 	Color getColor(Vector3 &pos);
 	double intersect(Ray &r);
 };
@@ -84,7 +91,7 @@ private:
 	Vector3 P;
 	double r;
 public:
-	Sphere(Meterial m, Texture* t, Vector3 _P, double _r);
+	Sphere(Meterial* m, Texture* t, Vector3 _P, double _r);
 	Color getColor(Vector3 &pos);
 	double intersect(Ray &r);
 };
