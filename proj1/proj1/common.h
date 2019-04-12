@@ -37,12 +37,14 @@ public:
 	Vector3 o;
 	Color color;
 	double radius;
-	Light():o(Vector3(0,0,0)),color(Color(0,0,0)),radius(0) {}
-	Light(Vector3 origin, Color c, double r) : o(origin),color(c),radius(r) {}
-	void set(Vector3 origin, Color c, double r) {
+	double brightness;
+	Light():o(Vector3(0,0,0)),color(Color(0,0,0)),radius(0),brightness(0) {}
+	Light(Vector3 origin, Color c, double r,double b) : o(origin),color(c),radius(r),brightness(b){}
+	void set(Vector3 origin, Color c, double r,double b) {
 		o = origin;
 		color = c;
 		radius = r;
+		brightness = b;
 	}
 	void show() {
 		printf("Light:\t");

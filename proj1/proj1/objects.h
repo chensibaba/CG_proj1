@@ -34,7 +34,7 @@ public:
 	Color getColor(double x, double y) { return Color(0, 0, 0); };
 };
 
-class PicTexture :Texture {
+class PicTexture :public Texture {
 private:
 	std::string picPath;
 	cv::Mat pic;
@@ -45,7 +45,7 @@ public:
 	Color getColor(double x, double y);
 };
 
-class ColorTexture :Texture {
+class ColorTexture :public Texture {
 private:
 	Color textureColor;
 public:
@@ -62,6 +62,8 @@ protected:
 	Meterial* objMeterial;
 	Texture* objTexture;
 	std::string name;
+	bool light = false;
+	Light* l;
 public:
 	Object(){}
 	std::string getName() { return name; }
@@ -69,11 +71,13 @@ public:
 	double getRefract() { return objMeterial->refract; }
 	double getdiffuse() { return objMeterial->diffuse; }
 	double getspecular() { return objMeterial->specular; }
+	bool isLight() { return light; }
+	void setAsLight(Light* _l) { light = true; l = _l; }
 	virtual Color getColor(Vector3 &pos) = 0;
 	virtual double intersect(Ray &r) = 0;
 };
 
-class Plane :Object {
+class Plane :public Object {
 private:
 	Vector3 n;
 	Vector3 P;
@@ -86,7 +90,7 @@ public:
 	double intersect(Ray &r);
 };
 
-class Sphere :Object {
+class Sphere :public Object {
 private:
 	Vector3 P;
 	double r;
