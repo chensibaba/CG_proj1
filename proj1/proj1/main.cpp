@@ -1,5 +1,5 @@
 #include <iostream>
-#include "scene.h"
+#include "builder.h"
 /*
 	Reference
 		http://www.flipcode.com/archives/Raytracing_Topics_Techniques-Part_1_Introduction.shtml
@@ -16,14 +16,10 @@ int main(void){
 	Meterial* m = s.getMeterial(0, 0, 0, 0);
 	ColorTexture* t = s.getColorTexture(Color(4, 5, 6));
 	Sphere* o = s.getSphere(m, t, Vector3(10, 0, 0), 5);
-	Ray r = Ray(Vector3(0, 0, 0), Vector3(1, 0, 0));
-	s.addObj(o);
-	IntersectPoint* p = s.getIntersectObj(r);
-	if (p != NULL) {
-		printf("%f", p->t);
-	}
+	Builder* b = new Builder();
+	b->buildScene((Object** )o, 1);
 	stop = time(NULL);
-	printf("Use Time:%ld\n", (stop - start));
+	printf("Used Time:%ld\n", (stop - start));
 	system("pause");
 	return 0;
 }

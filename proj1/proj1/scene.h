@@ -13,10 +13,10 @@ struct IntersectPoint {
 
 class Scene {
 private:
-	Object* objs[10];
+	Object* objs[20];
 	int objCnt;
 	int lightCnt;
-	Light* light[10];
+	Light* light[20];
 public:
 	Scene();
 

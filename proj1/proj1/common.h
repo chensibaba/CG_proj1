@@ -22,6 +22,7 @@ public:
 	void set(Vector3 origin, Vector3 direction) {
 		o = origin;
 		dir = direction;
+		dir.normalize();
 	}
 	void show() {
 		printf("Ray:");
